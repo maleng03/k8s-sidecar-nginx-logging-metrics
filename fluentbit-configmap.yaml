@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentbit-config
+  namespace: default
+data:
+  fluent-bit.conf: |
+    [SERVICE]
+        Flush                1
+        Log_Level            info
+
+    [INPUT]
+        Name                 tail
+        Path                 /var/log/nginx/access.log
+        Tag                  nginx.access
+        Refresh_Interval     5
+
+    [OUTPUT]
+        Name                 stdout
+        Match                *
+        Format               json_lines

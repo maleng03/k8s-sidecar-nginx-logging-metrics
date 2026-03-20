@@ -1,0 +1,8 @@
+# Ignore temp/system files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Kubernetes
+*.secret.yaml
